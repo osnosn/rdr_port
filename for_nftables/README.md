@@ -1,0 +1,33 @@
+This is for nftable.
+
+--------
+Compile with `gcc -O -o rdr_port_nft  rdr_port_nft.c` .
+
+This program is suitable for CentOS-8, firewalld enabled. Because firewalld has built many NFT tables and chains.  
+Otherwise, it needs to be modified.  
+
+Execute `rdr_port_nft` :
+* Insert a port redirection rule in the nftable chain according to the source IP provided. And get the handle NUM.
+  * Like this: `nft -ea add rule ip nat PREROUTING ip saddr 1.2.3.4 tcp dport 443 redirect to 22`
+* The program resides in the background and waits for N seconds (depending on the command line parameters).
+* Remove the previously inserted redirection rule from the nftable chain.
+  * Like this: `nft delete rule ip nat PREROUTING handle 10`
+* The program done & exit.
+
+-------
+用 `gcc -O -o rdr_port_ipt  rdr_port_ipt.c` 编译
+
+此程序，适合 CentOS-8，firewalld enabled 的情况。因为firewalld 已经建好了许多 nft 的 tables 和 chains。  
+否则需要修改才能用。  
+
+执行 `rdr_port_ipt` ：
+* 根据 提供的来源 IP，在 nftable chain 中插入一条端口重定向规则。并获取 handle 值。
+  * 例如: `nft -ea add rule ip nat PREROUTING ip saddr 1.2.3.4 tcp dport 443 redirect to 22`
+* 程序驻留后台等待 N 秒(根据命令行参数)。
+* 从 nftable chain 中删除之前插入的重定向规则。
+  * 例如: `nft delete rule ip nat PREROUTING handle 10`
+* 程序结束退出。
+
+-------
+2020-03-10.   
+end.
