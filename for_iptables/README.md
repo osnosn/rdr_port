@@ -23,5 +23,10 @@ Execute `rdr_port_ipt` :
 * 程序结束退出。
 
 -------
+`iptables` only for IPv4. If need IPv6, Change `iptables` to `ip6tables` .  
+
+因为 `iptables` 只支持ipv4. 如要支持ipv6， 请改 `iptables` 为 `ip6tables` .  
+
+-------
 2020-03-10.   
 end.
