@@ -29,5 +29,40 @@ Execute `rdr_port_nft` :
 * 程序结束退出。
 
 -------
+In CentOS-8 , firewalld.service enabled.  
+system create a lots of NFT tables and chains.
+```
+table .... {
+  ....
+}
+....
+table ip nat {
+   chain PREROUTING {
+      type nat hook prerouting priority -100; policy accept;
+   }
+   chain INPUT {
+      type nat hook input priority 100; policy accept;
+   }
+   chain POSTROUTING {
+      type nat hook postrouting priority 100; policy accept;
+   }
+   chain OUTPUT {
+      type nat hook output priority -100; policy accept;
+   }
+}
+....
+table .... {
+  ....
+}
+```
+This program add a rule into `table ip nat` -> `chain PREROUTING` .  
+So, if you don't have these tables and chains in your system, or they are different.  
+You need to create the appropriate tables and chains yourself, and modify the program to insert the rule into the correct chain.  
+
+此程序把规则加入到 `ip nat` 表，`PREROUTING` 链中。  
+如果你的系统中没有这些表和链，或者不同于这些表和链。  
+你需要自己建立合适的 表和链，并修改程序，把规则插入正确的链中。  
+
+-------
 2020-03-10.   
 end.
