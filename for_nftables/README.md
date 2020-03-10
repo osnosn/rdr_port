@@ -58,10 +58,14 @@ table .... {
 This program add a rule into `table ip nat` -> `chain PREROUTING` .  
 So, if you don't have these tables and chains in your system, or they are different.  
 You need to create the appropriate tables and chains yourself, and modify the program to insert the rule into the correct chain.  
+Because `table ip nat` only supports IPv4, the program only supports IPv4.  
+If you need IPv6, modify program, add the rule into `table ip6 nat` ->  `chain PREROUTING` .  
 
 此程序把规则加入到 `ip nat` 表，`PREROUTING` 链中。  
 如果你的系统中没有这些表和链，或者不同于这些表和链。  
 你需要自己建立合适的 表和链，并修改程序，把规则插入正确的链中。  
+因为 `table ip nat` 只支持IPv4, 所以程序只支持IPv4.
+如要支持IPv6，请修改程序，把rule加入 `table ip6 nat` -> `chain PREROUTING` 中。
 
 -------
 2020-03-10.   
