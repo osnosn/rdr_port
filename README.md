@@ -1,5 +1,6 @@
 # rdr_port
-redirect port in N seconds. 短时的重定向端口。
+Temporary redirect port in N seconds, use iptables or nftable rule.   
+临时重定向端口， 使用 ipt 或 nft 规则。  
 
 --------
 Execute `rdr_port_ipt` or  `rdr_port_nft` :
