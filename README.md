@@ -3,7 +3,7 @@ Temporary redirect port in N seconds, use iptables or nftable rule.
 临时重定向端口， 使用 ipt 或 nft 规则。  
 
 In the two directories are the programs (written in C) corresponding to the IPT and NFT rules.  
-just execute 'gcc -O -o xxxx rdr_port_ipt' to complite an executable file.  
+just execute `gcc -O -o xxxx rdr_port_ipt` to complite an executable file.  
 `strip xxxx` can make the executable file smaller.  
 
 两个目录中分别是对应 IPT 和 NFT 规则的 C语言程序。  
