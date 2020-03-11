@@ -30,7 +30,8 @@ Execute `rdr_port_nft` :
 
 -------
 In CentOS-8 , firewalld.service enabled.  
-system create a lots of NFT tables and chains.
+The system has created many NFT tables and chains.  
+系统已经创建了许多 NFT 的表和链。  
 ```
 table .... {
   ....
