@@ -29,7 +29,7 @@ For example, py3:
 ```
 import subprocess
 sip='1.2.3.4'
-output=subprocess.getoutput('somepath/rdr_port_ipt ' + sip + ' 20 a b')
+output=subprocess.getoutput('/somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
 
 -------
@@ -51,7 +51,7 @@ output=subprocess.getoutput('somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
 import subprocess
 sip='1.2.3.4'
-output=subprocess.getoutput('somepath/rdr_port_ipt ' + sip + ' 20 a b')
+output=subprocess.getoutput('/somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
 
 -------
