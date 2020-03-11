@@ -25,6 +25,12 @@ For example, PHP:
  $ip='1.2.3.4';
  exec('/somepath/rdr_port_ipt  '.$ip.'  20  a  b');
 ```
+For example, py3:
+```
+import subprocess
+sip='1.2.3.4'
+output=subprocess.getoutput('somepath/rdr_port_ipt ' + sip + ' 20 a b')
+```
 
 -------
 执行 `rdr_port_ipt` ：
@@ -40,6 +46,12 @@ For example, PHP:
 ```
  $ip='1.2.3.4';
  exec('/somepath/rdr_port_ipt  '.$ip.'  20  a  b');
+```
+如, py3:
+```
+import subprocess
+sip='1.2.3.4'
+output=subprocess.getoutput('somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
 
 -------
