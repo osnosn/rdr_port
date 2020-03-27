@@ -44,12 +44,15 @@ output=subprocess.getoutput('/somepath/rdr_port_ipt ' + sip + ' 20 a b')
 
 比如，php：
 ```
+ // $ip=$_SERVER['REMOTE_ADDR'];
  $ip='1.2.3.4';
  exec('/somepath/rdr_port_ipt  '.$ip.'  20  a  b');
 ```
 如, py3:
 ```
 import subprocess
+# import flask
+# sip=flask.request.remote_addr
 sip='1.2.3.4'
 output=subprocess.getoutput('/somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
