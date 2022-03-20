@@ -61,6 +61,9 @@ output=subprocess.getoutput('/somepath/rdr_port_ipt ' + sip + ' 20 a b')
 ```
 
 -------
+rdr_port_nft : see [ [for_nftables/](for_nftables/)]
+
+-------
 
 2020-03-10.   
 end.

@@ -1,7 +1,7 @@
 This is for nftable.
 
 --------
-Compile with `gcc -O -o rdr_port_nft  rdr_port_nft.c` .
+Compile with `gcc -O -o rdr_port_nft  rdr_port_nft.c`   
 
 This program is suitable for CentOS-8, firewalld enabled. Because firewalld has built many NFT tables and chains.  
 Otherwise, it needs to be modified.  
@@ -15,7 +15,7 @@ Execute `rdr_port_nft` :
 * The program done & exit.
 
 -------
-用 `gcc -O -o rdr_port_ipt  rdr_port_ipt.c` 编译
+用 `gcc -O -o rdr_port_ipt  rdr_port_ipt.c` 编译   
 
 此程序，适合 CentOS-8，firewalld enabled 的情况。因为firewalld 已经建好了许多 nft 的 tables 和 chains。  
 否则需要修改才能用。  
@@ -65,9 +65,41 @@ If you need IPv6, modify program, add the rule into `table ip6 nat` ->  `chain P
 此程序把规则加入到 `ip nat` 表，`PREROUTING` 链中。  
 如果你的系统中没有这些表和链，或者不同于这些表和链。  
 你需要自己建立合适的 表和链，并修改程序，把规则插入正确的链中。  
-因为 `table ip nat` 只支持IPv4, 所以程序只支持IPv4.
-如要支持IPv6，请修改程序，把rule加入 `table ip6 nat` -> `chain PREROUTING` 中。
+因为 `table ip nat` 只支持IPv4, 所以程序只支持IPv4.   
+如要支持IPv6，请修改程序，把rule加入 `table ip6 nat` -> `chain PREROUTING` 中。  
 
 -------
-2020-03-10.   
-end.
+In Debian-11 ,   
+Install nftables, `apt install nftables`,   
+Enable nftables service, `systemctl enable nftables`   
+MODIFY `/etc/nftables.conf`, ADD chain and hook into nftables `type nat hook prerouting priority 10;`   
+```
+table inet filter {
+	chain input {
+		type filter hook input priority 10;
+	}
+	chain forward {
+		type filter hook forward priority 10;
+	}
+	chain output {
+		type filter hook output priority 10;
+	}
+	chain prerouting {
+		type nat hook prerouting priority 10;
+	}
+}
+```
+RELOAD nftables, `nft -f /etc/nftables.conf`   
+
+File `rdr_port_nft.c` line 151,   
+* `execl("/usr/sbin/nft","nft","-eann","add","rule","ip","nat","PREROUTING","ip","saddr",ip,"tcp","dport",sport,"redirect","to",dport,(char *) NULL);`   
+
+MODIFY to (修改为)   
+* `execl("/usr/sbin/nft","nft","-eann","add","rule","inet","filter","prerouting","ip","saddr",ip,"tcp","dport",sport,"redirect","to",dport,(char *) NULL);`   
+
+Compile with `gcc -O -o rdr_port_nft  rdr_port_nft.c`   
+
+
+-------
+2022-03-20.   
+end.  
